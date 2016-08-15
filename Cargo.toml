@@ -1,0 +1,19 @@
+[package]
+name = "friendlyrust"
+version = "0.1.0"
+authors = ["Jared Wyles <wyles@adobe.com>"]
+build = "build.rs"
+
+[build-dependencies]
+serde_codegen = "0.8"
+glob = "0.2.11"
+
+[dependencies]
+time = "0.1"
+serde = "0.8"
+serde_json = "0.8"
+git2 = "0.4.4"
+
+[dependencies.hyper]
+version = "0.9.10"
+default-features = true

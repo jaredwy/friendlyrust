@@ -1,0 +1,74 @@
+use ::github_hooks::github_data::user::UserData;
+
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
+pub enum EventAction {
+    #[serde(rename="assigned")]
+    Assigned,
+    #[serde(rename="unassigned")]
+    Unassigned,
+    #[serde(rename="labeled")]
+    Labeled,
+    #[serde(rename="unlabeled")]
+    Unlabeled,
+    #[serde(rename="opened")]
+    Opened,
+    #[serde(rename="edited")]
+    Edited,
+    #[serde(rename="closed")]
+    Closed,
+    #[serde(rename="reopened")]
+    Reopened,
+    #[serde(rename="synchronize")]
+    Synchronize
+} 
+
+
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
+pub struct PullRequestInfo {
+    pub url: String,
+    pub id: i64,
+    pub html_url: String,
+    pub diff_url: String,
+    pub patch_url: String,
+    pub issue_url: String,
+    pub number: i64,
+    pub state: String,
+    pub locked: bool,
+    pub title: String,
+    pub user: UserData,
+    pub body: String,
+    pub created_at: String,
+    pub updated_at: String,
+    pub closed_at: Option<String>,
+    pub merged_at: Option<String>,
+    pub merge_commit_sha: Option<String>,
+    pub assignee: Option<String>,
+    pub milestone: Option<String>,
+    pub commits_url: String,
+    pub review_comments_url: String,
+    pub review_comment_url: String,
+    pub comments_url: String,
+    pub statuses_url: String,
+  //head: JsonPullRequestHead,
+    //base: JsonPullRequestHead,
+   // _links: JsonPullRequestLink,
+    pub  merged: bool,
+    pub  mergeable: Option<bool>,
+    pub  mergeable_state: String,
+    pub  merged_by: Option<String>,
+    pub  comments: i64,
+    pub  review_comments: i64,
+    pub  commits: i64,
+    pub  additions: i64,
+    pub  deletions: i64,
+    pub  changed_files: i64,
+}
+
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
+pub struct PullRequestData {
+    pub action: EventAction,
+    pub number: i64,
+    pub pull_request: PullRequestInfo,
+    //pub repository: JsonPullRequestHeadRepo,
+    //pub sender: JsonPullRequestUser,
+}
